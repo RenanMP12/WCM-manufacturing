@@ -34,9 +34,9 @@ print(f'{'Resin amount': <20} = {resin_amount/ratio*100: 4.2f} ml or {resin_amou
 print(f'{'Curing agent amount': <20} = {resin_amount/ratio*29: 4.2f} ml or {resin_amount/ratio*29*0.97: 4.2f} g')
 print(f'{'Additive amount': <20} = {resin_amount/ratio*1.7: 4.2f} ml or {resin_amount/ratio*1.7*1.05: 4.2f} g\n')
 
-area_SI = 260*550 # mm^2
+area_SI = partLength*partWidth # mm^2
 area_in = area_SI/645.2 # in^2
-pressure_bar = 20 
+pressure_bar = 20 # bar
 pressure_psi = pressure_bar*14.5038
 print(f"{" Pressure calculation ":-^50}")
 print(f'{'Force': <20} = {pressure_psi*area_in/1e3: 4.2f} lbf (tons)')
