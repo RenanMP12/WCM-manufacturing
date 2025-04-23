@@ -8,20 +8,24 @@ int main()
     double PartWidth = 260.0; // mm
     double PartThickness = 2.5; // mm
     double PartVolume = PartLength * PartWidth * PartThickness * 0.001; // ml
-    std::cout << "Part Volume: " << std::fixed << std::setprecision(2) << PartVolume << " ml" << std::endl;
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "Part Volume: " << PartVolume << " ml" << std::endl;
 
     // Resin dimension
     double fvf = 0.55; // fiber volume fraction
     double resinVolume = PartVolume * (1 - fvf); // ml
-    std::cout << "Resin Volume: " << std::fixed << std::setprecision(2) << resinVolume << " ml" << std::endl;
+    std::cout << "Resin Volume: " << resinVolume << " ml" << std::endl;
 
     // Resin description
     const double resinRatio = 100.0; // resin ratio
     const double hardenerRatio = 29; // hardener ratio
     const double additiveRatio = 1.7; // additive ratio
-    std::cout << "Resin amount: " << std::fixed << std::setprecision(2) << resinRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << std::endl;
-    std::cout << "Hardener amount: " << std::fixed << std::setprecision(2) << hardenerRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << std::endl;
-    std::cout << "Additive amount: " << std::fixed << std::setprecision(2) << additiveRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << std::endl;
+    const double resinDensity = 1.19; // g/cm^3
+    const double hardenerDensity = 0.97; // g/cm^3
+    const double additiveDensity = 1.05; // g/cm^3
+    std::cout << "Resin amount: " << resinRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << "or " << resinRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio)*resinDensity << " g" << std::endl;
+    std::cout << "Hardener amount: " << hardenerRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml"  << "or " << hardenerRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio)*hardenerDensity << " g" << std::endl;
+    std::cout << "Additive amount: " << additiveRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << "or " << additiveRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio)*additiveDensity << " g" << std::endl;
 
     // Resin amount - manual mixing 
     int columnWidth = 30;
@@ -29,11 +33,10 @@ int main()
     std::cout << std::endl;
     std::cout << std::left;
     std::cout << "Additional resin for manual mixing (10%)" << std::endl;
-    std::cout << std::fixed << std::setprecision(2);
     std::cout << std::setw(columnWidth) << "Resin amount (manual mixing): " << std::setw(10) << resinVolume << " ml" << std::endl << std::flush;
-    std::cout << std::setw(columnWidth) << "Resin amount: " << std::setw(10) << resinRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << std::endl;
-    std::cout << std::setw(columnWidth) << "Hardener amount: " << std::setw(10) << hardenerRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << std::endl;
-    std::cout << std::setw(columnWidth) << "Additive amount: " << std::setw(10) << additiveRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << std::endl;
+    std::cout << std::setw(columnWidth) << "Resin amount: " << std::setw(10) << resinRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << "or " << resinRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio)*resinDensity << " g" << std::endl;
+    std::cout << std::setw(columnWidth) << "Hardener amount: " << std::setw(10) << hardenerRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml"  << "or " << hardenerRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio)*hardenerDensity << " g" << std::endl;
+    std::cout << std::setw(columnWidth) << "Additive amount: " << std::setw(10) << additiveRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << "or " << additiveRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio)*additiveDensity << " g" << std::endl;
 
     // Pressure calculation
     double pressure = 20; // bar
