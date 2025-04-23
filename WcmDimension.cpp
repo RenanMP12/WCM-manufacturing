@@ -9,6 +9,10 @@ int main()
     double PartThickness = 2.5; // mm
     double PartVolume = PartLength * PartWidth * PartThickness * 0.001; // ml
     std::cout << std::fixed << std::setprecision(2);
+    std::cout << std::left;
+    std::cout << "Part Length: " << PartLength << " mm" << std::endl;
+    std::cout << "Part Width: " << PartWidth << " mm" << std::endl;
+    std::cout << "Part Thickness: " << PartThickness << " mm" << std::endl;
     std::cout << "Part Volume: " << PartVolume << " ml" << std::endl;
 
     // Resin dimension
@@ -31,7 +35,6 @@ int main()
     int columnWidth = 30;
     resinVolume *= 1.1; // 10% extra for manual mixing
     std::cout << std::endl;
-    std::cout << std::left;
     std::cout << "Additional resin for manual mixing (10%)" << std::endl;
     std::cout << std::setw(columnWidth) << "Resin amount (manual mixing): " << std::setw(10) << resinVolume << " ml" << std::endl << std::flush;
     std::cout << std::setw(columnWidth) << "Resin amount: " << std::setw(10) << resinRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio) << " ml" << "or " << resinRatio*resinVolume/(resinRatio + hardenerRatio + additiveRatio)*resinDensity << " g" << std::endl;
