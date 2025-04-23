@@ -39,4 +39,4 @@ area_in = area_SI/645.2 # in^2
 pressure_bar = 20 
 pressure_psi = pressure_bar*14.5038
 print(f"{" Pressure calculation ":-^50}")
-print(f'{'Force': <20}: {pressure_psi*area_in/1e3: 4.2f} lbf (tons)')
+print(f'{'Force': <20} = {pressure_psi*area_in/1e3: 4.2f} lbf (tons)')
