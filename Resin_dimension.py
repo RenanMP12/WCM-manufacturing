@@ -4,13 +4,23 @@ Created on Fri Feb 28 10:46:47 2025
 
 @author: rmportel
 """
-
-partLength = 550.0 # mm
-partWidth = 260.0 # mm
-partThickness = 2.5 # mm
+import os
+os.system('cls' if os.name == 'nt' else 'clear')
+print(f"{" Part dimensions ":-^50}")
+manufacturedPart = 0 # 0 if Panel, 1 if Hat Channel
+if manufacturedPart == 0:
+    partLength = 304.8 # mm
+    partWidth = 304.8 # mm
+    partThickness = 2.5 # mm
+    print(f"{'Manufactured part': <20} =  Panel")
+elif manufacturedPart == 1:
+    partLength = 550.0 # mm
+    partWidth = 260.0 # mm
+    partThickness = 2.5 # mm
+    print(f"{'Manufactured part': <20} =  Hat Channel")
 partVolumeSI = partLength*partWidth*partThickness*0.001 # mm^3 -> ml
 
-print(f"{" Part dimensions ":-^50}")
+
 print(f"{'Part dimensions': <20} = {partLength: 4.2f} mm x {partWidth: 4.2f} mm x {partThickness: 4.2f} mm")
 print(f'{'Part volume': <20} = {partVolumeSI: 4.2f} ml\n')
 
@@ -39,4 +49,5 @@ area_in = area_SI/645.2 # in^2
 pressure_bar = 20 # bar
 pressure_psi = pressure_bar*14.5038
 print(f"{" Pressure calculation ":-^50}")
+print(f'{'Pressure': <20} = {pressure_bar: 4.2f} bar')
 print(f'{'Force': <20} = {pressure_psi*area_in/1e3: 4.2f} lbf (tons)')
