@@ -3,16 +3,39 @@
 
 int main()
 {
-    // Part dimension
+    // Set the width of the output
     int columnWidth = 30;
-    double PartLength = 550.0; // mm
-    double PartWidth = 260.0; // mm
-    double PartThickness = 2.5; // mm
+    
+    // Set the precision of the output
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << std::left;
+
+    // Manufactured part
+    int partNumber = 0; // flat panel = 1, hat channel != 1
+    double PartLength, PartWidth, PartThickness;
+    std::cout << std::setfill('-') << std::setw(50) << "Part Dimensions " << std::endl;
+    std::cout << std::setfill(' ');
+
+    if (partNumber == 1)
+    {
+        // Part dimension - flat panel
+        std::cout << std::setw(columnWidth) << "Manufactured part:" << "Flat panel" << std::endl;
+        PartLength = 304.0; // mm
+        PartWidth = 304.0; // mm
+        PartThickness = 2.5; // mm    
+    }
+    else
+    {
+        // Part dimension - hat channel
+        std::cout << std::setw(columnWidth) << "Manufactured part:" << "Hat channel" << std::endl;
+        PartLength = 550.0; // mm
+        PartWidth = 260.0; // mm
+        PartThickness = 2.5; // mm
+    }  
+
     double PartVolume = PartLength * PartWidth * PartThickness * 0.001; // ml
     std::cout << std::fixed << std::setprecision(2);
     std::cout << std::left;
-    std::cout << std::setfill('-') << std::setw(50) << "Part Dimensions " << std::endl;
-    std::cout << std::setfill(' ');
     std::cout << std::setw(columnWidth) << "Part Length: " << PartLength << " mm" << std::endl;
     std::cout << std::setw(columnWidth) << "Part Width: " << PartWidth << " mm" << std::endl;
     std::cout << std::setw(columnWidth) << "Part Thickness: " << PartThickness << " mm" << std::endl;
@@ -55,6 +78,7 @@ int main()
     std::cout << std::endl;
     std::cout << std::setfill('-') << std::setw(50) << "Pressure calculation" << std::endl;
     std::cout << std::setfill(' ');
+    std::cout << std::setw(columnWidth) << "Pressure: " << pressure << " bar" << std::endl;
     std::cout << std::setw(columnWidth) << "Force: " << force << " lbf (tons)" << std::endl;
     
     return 0; // return statement
